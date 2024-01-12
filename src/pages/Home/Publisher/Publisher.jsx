@@ -14,7 +14,7 @@ const Publisher = () => {
     },
   });
   return (
-   <Box sx={{my:10,p:2}}>
+   <Box sx={{my:10,p:2, }}>
     <SectionHeading title="OUR PUBLISHERS" />
      <Box
       sx={{
@@ -32,7 +32,7 @@ const Publisher = () => {
   
           }}
         >
-          <Marquee>
+          <Marquee style={{zIndex: 0}}>
           {allPublisher?.map((publisher) => (
             <Paper elevation={12} key={publisher?._id} sx={{ py:3, px:5,  width:350, m:2 }}>
               <CardMedia

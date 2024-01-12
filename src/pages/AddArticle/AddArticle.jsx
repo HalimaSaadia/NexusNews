@@ -20,7 +20,7 @@ const selectStyle = {
     ...base,
     border: state.isFocused ? "none" : "none",
     outline: state.isFocused ? "none" : "none",
-    boxShadow:0  
+    boxShadow:0,
   }),
  
 };
@@ -29,6 +29,8 @@ const tagsOption = [
   { value: "business", label: "business" },
   { value: "entertainment", label: "Entertainment" },
   { value: "sports", label: "Sports" },
+  { value: "local updates", label: "Local Updates" },
+  { value: "international", label: "International News" },
 ];
 export default function AddArticle() {
   const axiosPublic = useAxiosPublic();
@@ -163,7 +165,7 @@ export default function AddArticle() {
             <CardContent>
             
               <form onSubmit={handleSubmit(onSubmit)}>
-                <Grid container columnSpacing={2}>
+                <Grid container columnSpacing={2} rowGap={2}>
                   <Grid item xs={12}  sm={6}>
                     <TextField
                       {...register("title", { required: true })}
@@ -203,7 +205,6 @@ export default function AddArticle() {
                           className="tags"
                           placeholder="select tag"
                           styles={selectStyle}
-                  
                           options={tagsOption}
                         />
                       )}
@@ -236,7 +237,7 @@ export default function AddArticle() {
                       fullWidth
                 
                       multiline
-                      rows={3}
+                      rows={5}
                     />
                     {errors.tags?.type === "required" && (
                       <Typography color="red">

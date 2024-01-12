@@ -14,6 +14,7 @@ const modalStyle = {
     transform: "translate(-50%, -50%)",
     padding: "10px",
     width: "300px",
+
   },
 };
 
@@ -22,7 +23,7 @@ const SubscriptionModal = () => {
   const navigate = useNavigate();
 
   return (
-    <Box>
+    <Box sx={{zIndex:50}}>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
