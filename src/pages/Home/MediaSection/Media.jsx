@@ -12,7 +12,7 @@ export default function MediaControlCard() {
 
 
   return (
-    <Box sx={{px:2}}>
+    <Box sx={{px:2, my:10}}>
       <SectionHeading title="Writing Essentials" />
       <Box sx={{ display:{lg:"flex"}, mt:5}}>
       <Box sx={{ flexDirection: "column", width:{lg: "60%"} }}>
