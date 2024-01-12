@@ -13,7 +13,7 @@ const HomePageStatistic = () => {
     return <Loader />;
   }
   return (
-    <Box>
+    <Box sx={{my:15,p:2}}>
       <SectionHeading title="OUR USERS" />
       <Box
         sx={{

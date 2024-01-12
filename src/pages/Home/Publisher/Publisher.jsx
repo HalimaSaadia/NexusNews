@@ -1,7 +1,8 @@
-import { Box, Card, CardContent, CardMedia, Container, Typography } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Container, Paper, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import SectionHeading from "../../../shared/SectionHeading/SectionHeading";
+import Marquee from "react-fast-marquee";
 
 const Publisher = () => {
   const axiosPublic = useAxiosPublic();
@@ -13,13 +14,12 @@ const Publisher = () => {
     },
   });
   return (
-   <Box sx={{my:10}}>
+   <Box sx={{my:10,p:2}}>
     <SectionHeading title="OUR PUBLISHERS" />
      <Box
       sx={{
         py: 5,
         color: "white",
-        my:3
       }}
     >
       <Box>
@@ -32,8 +32,9 @@ const Publisher = () => {
   
           }}
         >
+          <Marquee>
           {allPublisher?.map((publisher) => (
-            <Card key={publisher?._id} sx={{ width: 225,boxShadow:0 }}>
+            <Paper elevation={12} key={publisher?._id} sx={{ py:3, px:5,  width:350, m:2 }}>
               <CardMedia
                 sx={{ height: 140,width:140,borderRadius:"50%",border:"10px solid #5E503F",margin:"auto" }}
                 image={publisher?.publisherImage}
@@ -46,8 +47,9 @@ const Publisher = () => {
         
               </CardContent>
              
-            </Card>
+            </Paper>
           ))}
+          </Marquee>
         </Box>
       </Box>
     </Box>

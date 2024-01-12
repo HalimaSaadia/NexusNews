@@ -27,7 +27,7 @@ const Home = () => {
       
       <Box maxWidth={1200} mx="auto">
       <Banner />
-        <TopReads articles={articles}/>
+        <TopReads articles={articles} title="Top Reads"/>
         <TodaysPick />
         <Plans />
         <Media />

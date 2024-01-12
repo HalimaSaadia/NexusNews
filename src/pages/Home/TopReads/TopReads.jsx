@@ -50,13 +50,13 @@ const settings = {
   ],
 };
 
-export default function TopReads({articles}) {
+export default function TopReads({articles, title}) {
 
 
   return (
     <Box sx={{ width: "100%", overflowX: "clip", my:15, px:2, position: "relative" }}>
-      <Box sx={{position: "absolute", width: "calc(100% - 120px)", top:4}}>
-      <SectionHeading title="Top Reads" />
+      <Box sx={{position: "absolute", width: "calc(100% - 120px)", top:5}}>
+      <SectionHeading title={title} />
       </Box>
       <Slider {...settings}>
         {articles?.map((article) => (
