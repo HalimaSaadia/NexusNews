@@ -163,7 +163,6 @@ export default function AddArticle() {
               </Typography>
             </Box>
             <CardContent>
-            
               <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container columnSpacing={2} rowGap={2}>
                   <Grid item xs={12}  sm={6}>

@@ -19,11 +19,20 @@ const Home = () => {
       return result.data;
     },
   });
+
+  const { isPending: localUpdateLoading, data:localUpdates } = useQuery({
+    queryKey: ["localUpdates"],
+    queryFn: async () => {
+      const result = await axiosPublic.get("/local-update");
+      return result.data;
+    },
+  });
   return (
     <Box>
       <Box maxWidth={1200} mx="auto">
         <Banner />
         <TopReads articles={articles} title="Top Reads" />
+        <TopReads articles={localUpdates} title="Local Updates" />
         <Plans />
         <TodaysPick />   
         <Media />
