@@ -2,16 +2,16 @@
 .slick-prev,
 .slick-next {
   top: 20px; 
-  width: 20px; 
-  height: 20px; 
+  width: 25px; 
+  height: 25px; 
   z-index: 1; 
-  color: gray;
+  color: #1F1D1F;
 }
 
 
 .slick-prev {
   left: auto;
-  right: 30px; 
+  right: 50px; 
 }
 
 .slick-next {
@@ -20,9 +20,9 @@
 }
 
 .slick-prev:hover{
-  color: gray;
+  color: #1F1D1F;
 }
 
 .slick-next:hover {
-  color: gray;
+  color: #1F1D1F;
 }

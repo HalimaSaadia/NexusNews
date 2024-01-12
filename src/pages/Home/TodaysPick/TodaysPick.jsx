@@ -22,8 +22,11 @@ const TodaysPick = () => {
         </Box>
         <Box sx={{ flexDirection: "column", width: { md: "50%" } }}>
           <CardContent sx={{ flex: "1 0 auto", ml: { md: 5 } }}>
-            <Typography component="div" variant="h5">
+            <Typography component="div" variant="h6">
               PrimeTime Choice
+            </Typography>
+            <Typography component="p" fontWeight={500}>
+              Today at 9 PM
             </Typography>
 
             <Typography

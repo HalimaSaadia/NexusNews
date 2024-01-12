@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import SectionHeading from "../../../shared/SectionHeading/SectionHeading";
 import { GrNext, GrPrevious } from "react-icons/gr";
+import { BsArrowRightSquareFill, BsArrowLeftSquareFill  } from "react-icons/bs";
 
 const settings = {
   dots: false,
@@ -17,10 +18,10 @@ const settings = {
   slidesToScroll: 3,
   initialSlide: 0,
   prevArrow: (
-    <GrPrevious   
+    <BsArrowLeftSquareFill    
     />
   ),
-  nextArrow: <GrNext />,
+  nextArrow: <BsArrowRightSquareFill />,
   responsive: [
     {
       breakpoint: 1024,
@@ -49,24 +50,17 @@ const settings = {
   ],
 };
 
-export default function TopReads() {
-  const axiosPublic = useAxiosPublic();
-  const { isPending: trendLoading, data: articles } = useQuery({
-    queryKey: ["trendingArticle"],
-    queryFn: async () => {
-      const result = await axiosPublic.get("/trendingArticle");
-      return result.data;
-    },
-  });
+export default function TopReads({articles}) {
+
 
   return (
-    <Box sx={{ width: "100%", overflowX: "clip", my:15, px:2, }}>
-      <Box>
+    <Box sx={{ width: "100%", overflowX: "clip", my:15, px:2, position: "relative" }}>
+      <Box sx={{position: "absolute", width: "calc(100% - 120px)", top:4}}>
       <SectionHeading title="Top Reads" />
       </Box>
       <Slider {...settings}>
         {articles?.map((article) => (
-          <Box key={article?._id} sx={{ mt: 3 }}>
+          <Box key={article?._id} sx={{ mt: 8 }}>
             <Box sx={{mr:1.5, mt:2}}>
               <CardMedia
                 component="img"
@@ -75,7 +69,7 @@ export default function TopReads() {
                 title="Live from space album cover"
               />
              <Link to={`/details/${article?._id}`}>
-             <Typography  variant="subtitle1" sx={{mt:2,fontWeight:"semibold", color:"primary.main", "&:hover":{textDecoration:"underline", cursor:"pointer", color:"black"}}}>
+             <Typography  variant="subtitle1" sx={{mt:2,textDecoration:"none",fontWeight:"semibold", color:"primary.main", "&:hover":{textDecoration:"underline", cursor:"pointer", color:"black"}}}>
                 {article?.title}
               </Typography></Link>
             </Box>
