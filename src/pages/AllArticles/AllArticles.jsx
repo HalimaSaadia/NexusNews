@@ -12,7 +12,7 @@ const AllArticles = () => {
   const { data: categories, isPending: categoriesLoading } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
-      const categories = await axios.get("http://localhost:5000/categories");
+      const categories = await axiosPublic.get("/categories");
       return categories.data;
     },
   });
