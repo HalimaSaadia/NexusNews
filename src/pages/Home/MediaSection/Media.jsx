@@ -39,7 +39,7 @@ export default function MediaControlCard() {
         title="Live from space album cover"
         controls
         autoPlay
-        muted
+        // muted
       />
     </Box>
     </Box>

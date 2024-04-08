@@ -14,7 +14,7 @@ const SectionHeading = ({ title }) => {
     >
      
       <Typography fontWeight={700} sx={{fontSize: "24px", textAlign:"left" }}>
-        {title}
+        {title.toUpperCase()}
       </Typography>
       <Box style={{  flex: "1 1 0%" }} >
       <hr style={{  flex: "1 1 0%" }}  />

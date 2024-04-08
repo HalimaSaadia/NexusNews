@@ -9,9 +9,13 @@ import Banner from "../Banner/Banner";
 import TopReads from "../TopReads/TopReads";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useAllArticles from "../../../Hooks/useAllArticles";
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
+  const allCategoriesArticles = useAllArticles()
+
+  console.log(allCategoriesArticles);
   const { isPending: trendLoading, data: articles } = useQuery({
     queryKey: ["trendingArticle"],
     queryFn: async () => {
@@ -27,6 +31,7 @@ const Home = () => {
       return result.data;
     },
   });
+
   return (
     <Box>
       <Box maxWidth={1200} mx="auto">
