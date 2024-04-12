@@ -4,8 +4,7 @@ import {
   Divider,
   Grid,
   ListItemButton,
-  ListItemIcon,
-  ListItemText,
+  Paper,
   Typography,
 } from "@mui/material";
 import "leaflet/dist/leaflet.css";
@@ -15,17 +14,19 @@ import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import KeyPersonels from "./KeyPersonels/KeyPersonels";
 
 const AboutUs = () => {
   const position = [51.505, -0.09];
   return (
-    <Grid container>
-      <Grid item md={3} sx={{ height: "90vh", bgcolor: "secondary.main", }}>
+    <Box>
+      <KeyPersonels />
+      <Box>
         <Box
           sx={{
             height: "100%",
             display: "flex",
-            overflow:scroll,
+            overflow: scroll,
             flexDirection: "column",
           }}
         >
@@ -66,55 +67,24 @@ const AboutUs = () => {
             <Divider sx={{ borderColor: "tertiary.main" }} />
             <ListItemButton component="ul" href="#simple-list">
               <Box>
-                <Typography variant="h6" sx={{ color: "white" }}>
-                  Key Personnel
-                </Typography>
+             
 
-                <Box sx={{display:"flex",alignItems:"center",gap:2,mt:1}}>
-                  <Avatar alt="Remy Sharp" src="https://images.pexels.com/photos/9835442/pexels-photo-9835442.jpeg?auto=compress&cs=tinysrgb&w=600" />
-
-                  <Typography sx={{ color: "tertiary.main" }}>
-                  <span style={{color:"#eae0d5",fontWeight:500,fontSize:"20px"}}> Sarah L.</span>
-                    <br />
-                   Chief Reporter
-                  </Typography>
+                <Box
+                  sx={{ display: "flex", alignItems: "center", gap: 2, mt: 1 }}
+                >
+                
                 </Box>
-                <Box sx={{display:"flex",alignItems:"center",gap:2,mt:1}}>
-                  <Avatar alt="Remy Sharp" src="https://images.pexels.com/photos/7103081/pexels-photo-7103081.jpeg?auto=compress&cs=tinysrgb&w=600" />
-
-                  <Typography sx={{ color: "tertiary.main" }}>
-                  <span style={{color:"#eae0d5",fontWeight:500,fontSize:"20px"}}> Tailor B.</span>
-                    <br />
-                   Chief Editor
-                  </Typography>
-                </Box>
+           
               </Box>
             </ListItemButton>
-           
           </Box>
           <Box>
             <Divider sx={{ borderColor: "tertiary.main" }} />
-            <Box p={2}>
-              <Typography
-                sx={{
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                }}
-                color="tertiary.main"
-              >
-                <YouTubeIcon color="white" fontSize="large" />{" "}
-                <FacebookTwoToneIcon fontSize="large" />{" "}
-                <LinkedInIcon fontSize="large" />
-                <EmailIcon fontSize="large" />
-                <InstagramIcon fontSize="large" />
-              </Typography>
-            </Box>
+         
           </Box>
         </Box>
-      </Grid>
-      <Grid item md={9}>
+      </Box>
+      <Grid item md={9} >
         <MapContainer
           style={{ height: "90vh", zIndex: -50 }}
           center={position}
@@ -133,7 +103,7 @@ const AboutUs = () => {
           </Marker>
         </MapContainer>
       </Grid>
-    </Grid>
+    </Box>
   );
 };
 
