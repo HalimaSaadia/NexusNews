@@ -3,14 +3,16 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import AllArticleCard from "./AllArticleCard";
 import { useState } from "react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Categories = ({ category }) => {
   const [searchedValue, setSearchedValue] = useState("");
+  const axiosPublic = useAxiosPublic();
   const { data: categoryArticles } = useQuery({
     queryKey: ["categoriesArticles", category, searchedValue],
     queryFn: async () => {
-      const result = await axios.post(
-        "http://localhost:5000/approved-articles",
+      const result = await axiosPublic.post(
+        "/approved-articles",
         { category, searchedValue }
       );
       return result.data;
