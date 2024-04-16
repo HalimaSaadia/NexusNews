@@ -1,4 +1,4 @@
-import { Avatar, Box, Grid, Paper, Typography } from "@mui/material";
+import { Avatar, Box, Container, Grid, Paper, Typography } from "@mui/material";
 import "leaflet/dist/leaflet.css";
 import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -7,18 +7,23 @@ import EmailIcon from "@mui/icons-material/Email";
 const KeyPersonels = () => {
   return (
    <>
-   <Typography mt={5} textAlign="center" variant="h4" fontWeight={600} >Key Personals</Typography>
-    <Box sx={{ display: "flex", justifyContent: "center", px: 5 }}>
-      <Grid
-        container
-        sx={{ py: 15, maxWidth: 1000 }}
-        rowGap={5}
-        columnSpacing={5}
+   <Typography mt={8} mb={4} textAlign="center" variant="h4" fontWeight={600} >Key Personals</Typography>
+    <Box sx={{ width:"100%",display: "flex", justifyContent: "center"}}>
+      <Box
+       
+        sx={{
+          display: "flex",
+         justifyContent:{xs:"center", lg:"space-between"}, 
+         flexWrap:"wrap",
+          py:{xs:5,sm: 10, md:15},
+          gap: 5,
+        }}
+        
       >
-        <Grid sm={6} lg={4}>
+        <Box>
           <Paper
             justifySelf="center"
-            sx={{ width: 300, height: 400, border:"1px solid #c6ac8f" }}
+            sx={{ width: 300, height: 400, border:"1px solid #c6ac8f", boxShadow: "0px 27px 65px 0px rgba(0, 0, 0, 0.3)", cursor:"pointer", "&:hover": {transform: "scale(1.1)",}, transition: "transform 0.5s ease-in-out"  }}
             elevation={3}
             
           >
@@ -69,10 +74,10 @@ const KeyPersonels = () => {
               </Box>
             </Box>
           </Paper>
-        </Grid>
-        <Grid sm={6} lg={4}>
+        </Box>
+        <Box>
           <Paper
-            sx={{ width: 300, height: 400, border:"1px solid #5e503f", mt: { lg: -10 } }}
+            sx={{ width: 300, height: 400, border:"1px solid #5e503f", mt: { md: -10 }, boxShadow: "0px 27px 65px 0px rgba(0, 0, 0, 0.3)", cursor:"pointer", "&:hover": {transform: "scale(1.1)",}, transition: "transform 0.5s ease-in-out"  }}
             elevation={3}
           >
             <Box sx={{ height: 180, position: "relative" }}>
@@ -123,9 +128,10 @@ const KeyPersonels = () => {
               </Box>
             </Box>
           </Paper>
-        </Grid>
-        <Grid sm={6} lg={4}>
-          <Paper sx={{ width: 300, height: 400, border:"1px solid #c6ac8f" }} elevation={3} >
+        </Box>
+        <Box>
+          <Paper sx={{ width: 300, height: 400, border:"1px solid #c6ac8f", boxShadow: "0px 27px 65px 0px rgba(0, 0, 0, 0.3)", cursor:"pointer", "&:hover": {transform: "scale(1.1)",}, transition: "transform 0.5s ease-in-out"  }}
+            elevation={3}  >
             <Box sx={{ height: 180, position: "relative" }}>
               <Box sx={{ height: 120, bgcolor: "tertiary.main" }}></Box>
               <Avatar
@@ -173,8 +179,8 @@ const KeyPersonels = () => {
               </Box>
             </Box>
           </Paper>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Box>
    </>
   );

@@ -226,63 +226,7 @@ export default function Plans() {
           </Card>
 
       
-          {/* <Card
-            variant="outlined"
-            sx={{ border: "2px solid #0a0908", maxWidth: 300 }}
-          >
-            <CardContent>
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Box>
-                  {" "}
-                  <Typography sx={{ fontWeight: 700 }} variant="h6">
-                    Premium 
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 700 }} variant="h6">
-                    $16.99
-                  </Typography>
-                  <Typography sx={{ fontWeight: 500 }}>per month</Typography>
-                </Box>
-              </Box>
-              <Divider />
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Box>
-                  {" "}
-                  <Typography sx={{ fontWeight: 700 }} variant="h6">
-                    {"\u00A0"}
-                  </Typography>
-                  <Typography sx={{ fontWeight: 700 }} variant="h6">
-                    {"\u00A0"}
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 700 }} variant="h6">
-                    {"\u00A0"}
-                  </Typography>
-                  <Typography sx={{ fontWeight: 500 }}>{"\u00A0"}</Typography>
-                </Box>
-              </Box>
-
-             
-              <Button
-                variant="contained"
-                sx={{ borderRadius: 10 }}
-                color="primary"
-                fullWidth
-                size="small"
-              >
-                Get Premium Duo
-              </Button>
-            </CardContent>
-            <Divider sx={{ pt: 1 }} />
-            <CardActions>
-              <Typography variant="body2">
-               
-                <br />
-              </Typography>
-            </CardActions>
-          </Card> */}
+        
         </Box>
       </Box>
     </Box>

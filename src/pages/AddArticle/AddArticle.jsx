@@ -14,7 +14,16 @@ import usePublisher from "../../Hooks/usePublisher";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import addArticle from "../../assets/addArticle";
+import addArticle from "../../assets/lottie/addArticle.json";
+
+const options = {
+  loop: true,
+  autoplay: true,
+  animationData: addArticle,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 const selectStyle = {
   control: (base, state) => ({
@@ -29,14 +38,7 @@ const selectStyle = {
   }),
 };
 
-const options = {
-  loop: true,
-  autoplay: true,
-  animationData: addArticle,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
+
 const tagsOption = [
   { value: "politics", label: "Politics" },
   { value: "business", label: "business" },
