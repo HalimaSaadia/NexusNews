@@ -147,6 +147,7 @@ export default function AddArticle() {
         justifyContent: "end",
         alignItems: "center",
         position: "relative",
+       
       }}
     >
       <Box sx={{ position: "absolute", top: 0, height: "90vh", left: 0, zIndex:-1 }}>

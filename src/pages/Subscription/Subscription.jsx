@@ -1,4 +1,4 @@
-import { Box, Container, Divider, Typography } from "@mui/material";
+import { Box, Container, Divider, Grid, Typography } from "@mui/material";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -10,27 +10,14 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import { Link } from "react-router-dom";
+import PackageSlider from "./PackageSlider/PackageSlider";
 
-const options = [
-  "Create a merge commit",
-  "Squash and merge",
-  "Rebase and merge",
-];
+
 
 const Subscription = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-
-  const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
-  };
-
-  const handleMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
-    setOpen(false);
-  };
-
+ 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -48,75 +35,109 @@ const Subscription = () => {
       <Box
         sx={{
           background:
-            "linear-gradient(rgba(0,0,0,0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/936137/pexels-photo-936137.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover no-repeat",
-          minHeight: "400px",
-          mb: 5,
+            "linear-gradient(to right, rgba(1,1,1,1), rgba(0, 0, 0, 0)), url('https://images.pexels.com/photos/936137/pexels-photo-936137.jpeg?auto=compress&cs=tinysrgb&w=900') center/cover no-repeat",
+          minHeight: "100vh",
           py: 5,
-          pl: 5,
+          
         }}
       >
-        <Typography variant="h2" color="white">
-          Your Window to World
-        </Typography>
-        <Typography variant="h2" color="white" sx={{ my: 3 }}>
-          Subscribe for unmatched perspective
-        </Typography>
+        <Grid container>
+          <Grid item md={6} sx={{pl:{xs:2, md:5}}}>
+          <Typography sx={{mt:{md:4}}} fontSize={48} color="white" mb={3}>
+            Your Window to World Subscribe for unmatched perspective
+          </Typography>
 
-        <>
-          <ButtonGroup
-            variant="contained"
-            ref={anchorRef}
-            aria-label="split button"
-          >
-            <Button color="secondary">{`Select Your Pack `}</Button>
-            <Button
-              size="small"
-              aria-controls={open ? "split-button-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
-              aria-label="select merge strategy"
-              aria-haspopup="menu"
-              onClick={handleToggle}
+          <Box>
+            <ButtonGroup
+              variant="contained"
+              ref={anchorRef}
+            sx={{position:"static"}}
             >
-              <ArrowDropDownIcon />
-            </Button>
-          </ButtonGroup>
-          <Popper
-            sx={{
-              zIndex: 1,
-            }}
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom",
-                }}
+              <Button color="secondary">{`Select Your Pack `}</Button>
+              <Button
+                size="small"
+                onClick={handleToggle}
               >
-                <Paper>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList
-                      sx={{ width: 230 }}
-                      id="split-button-menu"
-                      autoFocusItem
-                    >
-                    <Link to={`/payment/${1}`}>  <MenuItem>$2 for 1 minute </MenuItem></Link>
-                      <Divider />
-                     <Link to={`/payment/${2}`}> <MenuItem>$14.99 for 5 Days</MenuItem></Link>
-                      <Divider />
-                     <Link to={`/payment/${3}`}> <MenuItem>$16.99 for 10 Days</MenuItem></Link>
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
-        </>
+                <ArrowDropDownIcon />
+              </Button>
+            </ButtonGroup>
+            <Popper
+              sx={{
+                zIndex: 1,
+              }}
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              transition
+              disablePortal
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        sx={{ width: 220, mt: 1, backgroundColor: "#5e503f" }}
+                        autoFocusItem
+                      >
+                        <MenuItem>
+                          <Link
+                            style={{
+                              color: "white",
+                              textDecoration: "none",
+                              fontSize: 15,
+                              letterSpacing: 1.5,
+                            }}
+                            to={`/payment/${1}`}
+                          >
+                            {" "}
+                            $2 For 1 Minute
+                          </Link>{" "}
+                        </MenuItem>
+                        <Divider sx={{ border: "1px solid #c6ac8f" }} />
+                        <MenuItem>
+                          <Link
+                            style={{
+                              color: "white",
+                              textDecoration: "none",
+                              fontSize: 15,
+                              letterSpacing: 1.5,
+                            }}
+                            to={`/payment/${2}`}
+                          >
+                            {" "}
+                            $14.99 for 5 Days
+                          </Link>
+                        </MenuItem>
+                        <Divider sx={{ border: "1px solid #c6ac8f" }} />{" "}
+                        <MenuItem>
+                          <Link
+                            style={{
+                              color: "white",
+                              textDecoration: "none",
+                              fontSize: 15,
+                              letterSpacing: 1.5,
+                            }}
+                            to={`/payment/${3}`}
+                          >
+                            {" "}
+                            $16.99 for 10 Days
+                          </Link>
+                        </MenuItem>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </Box>
+          </Grid>
+          <Grid item xs={12} md={6} sx={{display:"flex", justifyContent:"center", mt:{xs:10, md:0}}}>
+              <PackageSlider />
+          </Grid>
+        </Grid>
       </Box>
     </Box>
   );

@@ -1,3 +1,4 @@
+import Slider from "react-slick";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -5,30 +6,26 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CircleIcon from "@mui/icons-material/Circle";
-import {
-  Divider,
-  List,
-  ListItemText,
-} from "@mui/material";
-import SectionHeading from "../../../shared/SectionHeading/SectionHeading";
+import { Divider, List, ListItemText } from "@mui/material";
 
-
-
-export default function Plans() {
+const PackageSlider = () => {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
-    <Box sx={{p:2}}>
-      <SectionHeading title="OUR PLANS" />
-      <Box sx={{ py: 5 }}>
-        <Box
-          sx={{
-            display: "flex",
-           justifyContent:{xs:"center", lg:"space-between"}, 
-           flexWrap:"wrap",
-
-            gap: 5,
-          }}
-        >
-          <Card sx={{ border: "2px solid #c6ac8f", maxWidth: 300, boxShadow: "0px 27px 65px 0px rgba(0, 0, 0, 0.3)", "&:hover": {transform: "scale(1.1)",}, transition: "transform 0.3s ease-in-out" }}>
+    <Box sx={{ width: 300}}>
+      <Slider {...settings}>
+        <Box sx={{ mt: 7 }}>
+          <Card
+            sx={{
+              border: "2px solid #c6ac8f",
+              maxWidth: 300,
+            }}
+          >
             <Box
               height={70}
               sx={{
@@ -60,10 +57,14 @@ export default function Plans() {
                   <Box sx={{ display: "flex", alignItems: "center" }}>
                     <ListItemText secondary="&nbsp;" />
                   </Box>
-                  <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
+                  <Box
+                    sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}
+                  >
                     <ListItemText secondary="&nbsp;" />
                   </Box>
-                  <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
+                  <Box
+                    sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}
+                  >
                     <ListItemText secondary="&nbsp;" />
                   </Box>
                 </List>
@@ -81,14 +82,19 @@ export default function Plans() {
             <Divider />
             <CardActions>
               <Typography variant="body2">
-                Offer only Available If have
-                not tried premium before
+                Offer only Available If have not tried premium before
                 <br />
               </Typography>
             </CardActions>
           </Card>
-
-          <Card sx={{ border: "2px solid #5e503f", maxWidth: 300, boxShadow: "0px 27px 65px 0px rgba(0, 0, 0, 0.3)", "&:hover": {transform: "scale(1.1)",}, transition: "transform 0.3s ease-in-out" }}>
+        </Box>
+        <Box sx={{ mt: 7 }}>
+          <Card
+            sx={{
+              border: "2px solid #5e503f",
+              maxWidth: 300,
+            }}
+          >
             <Box
               height={70}
               sx={{
@@ -98,8 +104,13 @@ export default function Plans() {
                 px: 2,
               }}
             >
-              <Typography gutterBottom variant="h6" color="white" component="div">
-              Premium Duo
+              <Typography
+                gutterBottom
+                variant="h6"
+                color="white"
+                component="div"
+              >
+                Premium Duo
               </Typography>
             </Box>
             <CardContent>
@@ -152,8 +163,9 @@ export default function Plans() {
               </Typography>
             </CardActions>
           </Card>
-
-          <Card sx={{ border: "2px solid #0a0908", maxWidth: 300, boxShadow: "0px 27px 65px 0px rgba(0, 0, 0, 0.3)", "&:hover": {transform: "scale(1.1)",}, transition: "transform 0.3s ease-in-out" }}>
+        </Box>
+        <Box sx={{ mt: 7 }}>
+          <Card sx={{ border: "2px solid #0a0908", maxWidth: 300 }}>
             <Box
               height={70}
               sx={{
@@ -163,12 +175,17 @@ export default function Plans() {
                 px: 2,
               }}
             >
-              <Typography gutterBottom variant="h6" color="white" component="div">
-              Premium Family
+              <Typography
+                gutterBottom
+                variant="h6"
+                color="white"
+                component="div"
+              >
+                Premium Family
               </Typography>
             </Box>
             <CardContent>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              <Typography sx={{ mb: 1.5 }} color="text.secondary">
                 <List>
                   <Box sx={{ display: "flex", alignItems: "center" }}>
                     <CircleIcon sx={{ fontSize: "small", mr: 1 }} />
@@ -202,20 +219,19 @@ export default function Plans() {
                 Get Premium Duo
               </Button>
             </CardContent>
-            
+
             <Divider />
             <CardActions>
               <Typography variant="body2">
-              For 6 Family member who resides at the same address
+                For 6 Family member who resides at the same address
                 <br />
               </Typography>
             </CardActions>
           </Card>
-
-      
-        
         </Box>
-      </Box>
+      </Slider>
     </Box>
   );
-}
+};
+
+export default PackageSlider;
