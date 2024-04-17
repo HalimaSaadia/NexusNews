@@ -16,25 +16,7 @@ const AllArticles = () => {
       return categories.data;
     },
   });
-  // const {
-  //   isPending: allArticlesLoading,
-  //   data: articles = [],
-  //   refetch,
-  // } = useQuery({
-  //   queryKey: ["articles",searchedValue],
-  //   queryFn: async () => {
-  //     const result = await axiosPublic.post(`/approved-articles`, {
-  //       searchedValue,
-  //     });
-  //     return result.data;
-  //   },
-  // });
 
-  // const handleSearch = (e) => {
-  //   e.preventDefault()
-  //   setSearchedValue(e.target.searchValue.value);
-  //   refetch();
-  // };
 
   return (
     <Container maxWidth="lg" sx={{ py: 5 }}>

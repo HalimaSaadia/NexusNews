@@ -71,20 +71,6 @@ export default function AllArticleCard({ article }) {
           {description?.slice(0, 40)}... {<Link style={{color:article?.isPremium ? "white":"black", display: !loggedInUser?.isPremiumTaken && article?.isPremium && "none"}} to={`/details/${_id}`}>Details</Link> }
         </Typography>
       </CardContent>
-
-      {/* <CardActions disableSpacing>
-        <Button
-          onClick={() => navigate(`/details/${_id}`)}
-          disabled={
-            !loggedInUser?.isPremiumTaken && article?.isPremium ? true : false
-          }
-          fullWidth
-          variant="contained"
-          color="secondary"
-        >
-          Details
-        </Button>
-      </CardActions> */}
     </Grid>
   );
 }
