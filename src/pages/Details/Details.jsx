@@ -18,53 +18,58 @@ import {
   ListItemText,
   Skeleton,
 } from "@mui/material";
-import ScheduleIcon from '@mui/icons-material/Schedule';
+import ScheduleIcon from "@mui/icons-material/Schedule";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-
+import AllArticleCard from "../AllArticles/AllArticleCard";
+import CategoriesArticleCard from "./CategoriesArticleCard";
+import SectionHeading from "../../shared/SectionHeading/SectionHeading";
 
 export default function Details() {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
+  const [tag, setTag] = useState("");
 
-  const {
-    data: article = {},
-    refetch,
-    isPending,
-  } = useQuery({
-    queryKey: ["articleDetails"],
+  const { data: article = {}, isPending } = useQuery({
+    queryKey: ["articleDetails", id],
     queryFn: async () => {
       const result = await axiosPublic.get(`/details/${id}`);
-      console.log(result.data);
+      setTag(result.data.tag);
+      return result.data;
+    },
+  });
+  const { data: categoryArticles } = useQuery({
+    queryKey: ["categoriesArticles", id],
+    queryFn: async () => {
+      const result = await axiosPublic.post("/approved-articles", {
+        category: tag,
+        searchedValue: "",
+      });
       return result.data;
     },
   });
 
-  useEffect(()=>{
-    if(!isPending){
-      axiosPublic.patch(`/details/${id}`)
-    .then(res => {
-      console.log("viewCount",res.data);
-    
-    })
+  useEffect(() => {
+    if (!isPending) {
+      axiosPublic.patch(`/details/${id}`).then((res) => {
+        console.log("viewCount", res.data);
+      });
     }
-   
-  },[isPending])
+  }, [isPending]);
 
   return (
     <Container sx={{ py: 5 }}>
       <Grid container>
         <Grid item md={8}>
-          <Box>
+          <Box sx={{position:{md:"sticky"}, top:0}}>
             <Card sx={{ p: 2 }}>
               <Box sx={{ position: "relative" }}>
                 {article.image ? (
                   <CardMedia
                     component="img"
-                    sx={{ objectFit: "fit", height: 384 }}
+                    sx={{ objectFit: "fit", height: { xs: 224, sm: 384 } }}
                     image={article?.image}
                     alt="Paella dish"
                   />
@@ -107,25 +112,25 @@ export default function Details() {
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
-          <List sx={{ ml: { md: 2 }, width:"100%" }}>
-            <ListItem 
-              sx={{ bgcolor: "secondary.main", width:"100%" }}
+          <List sx={{ pl: { md: 2 }, width: "100%" }}>
+            <ListItem
+              sx={{ bgcolor: "secondary.main", width: "100%" }}
               alignItems="flex-start"
             >
               <ListItemAvatar>
                 <Avatar
-                  sx={{ height: 70, width: 70 }}
+                  sx={{ height: 50, width: 50 }}
                   alt="Remy Sharp"
                   src={article?.authorImage}
                 />
               </ListItemAvatar>
               <ListItemText
                 secondary={
-                  <Box ml={2} mt={1}>
+                  <Box ml={2}>
                     <Typography
                       sx={{ display: "inline" }}
                       component="span"
-                      variant="h5"
+                      variant="h6"
                       color="white"
                     >
                       {article?.author}
@@ -145,7 +150,7 @@ export default function Details() {
 
             <ListItem
               alignItems="flex-start"
-              sx={{ mt: 5, bgcolor: "secondary.main" }}
+              sx={{ mt: 3, bgcolor: "secondary.main" }}
             >
               <IconButton>
                 <NewspaperIcon
@@ -155,11 +160,11 @@ export default function Details() {
               </IconButton>
               <ListItemText
                 secondary={
-                  <Box ml={2} mt={1}>
+                  <Box ml={2}>
                     <Typography
                       sx={{ display: "inline" }}
                       component="span"
-                      variant="h5"
+                      variant="h6"
                       color="white"
                     >
                       {article?.publisher}
@@ -176,10 +181,10 @@ export default function Details() {
                 }
               />
             </ListItem>
-            
+
             <ListItem
               alignItems="flex-start"
-              sx={{ mt: 5, bgcolor: "secondary.main" }}
+              sx={{ mt: 3, bgcolor: "secondary.main" }}
             >
               <IconButton>
                 <ScheduleIcon
@@ -189,11 +194,11 @@ export default function Details() {
               </IconButton>
               <ListItemText
                 secondary={
-                  <Box ml={2} mt={1}>
+                  <Box ml={2}>
                     <Typography
                       sx={{ display: "inline" }}
                       component="span"
-                      variant="h5"
+                      variant="h6"
                       color="white"
                     >
                       {article?.postedDate}
@@ -211,6 +216,18 @@ export default function Details() {
               />
             </ListItem>
           </List>
+          <Box sx={{ ml: { md: 2 }, mt: 5 }}>
+            <SectionHeading title={`More On ${tag}`} />
+          </Box>
+          <Grid container columnSpacing={2}>
+            {categoryArticles?.map((article) => (
+              <CategoriesArticleCard
+                id={id}
+                key={article?._id}
+                article={article}
+              />
+            ))}
+          </Grid>
         </Grid>
       </Grid>
     </Container>

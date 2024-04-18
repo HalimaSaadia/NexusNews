@@ -9,13 +9,13 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { MdWorkspacePremium } from "react-icons/md";
 import { Box, Button, Grid } from "@mui/material";
 
-export default function AllArticleCard({ article }) {
-  const { author, authorImage, description, image, publisher, title, _id } =
+const CategoriesArticleCard = ({ article, id }) => {
+    const { author, authorImage, description, image, publisher, title, _id } =
     article;
   const { user, loading } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
 
-  const { isPending: loggedInUserPending, data: loggedInUser } = useQuery({
+  const { data: loggedInUser } = useQuery({
     queryKey: ["loggedInUser"],
     enabled: !loading,
     queryFn: async () => {
@@ -23,28 +23,28 @@ export default function AllArticleCard({ article }) {
       return result.data;
     },
   });
-
   return (
-    <Grid item sm={6} md={4} sx={{ display: "flex", flexDirection: "column" }}>
-      <Box sx={{position:"relative"}}>
+    <Grid item sm={6} md={12} mt={3} sx={{ display: id === _id && "none"  }}>
+      <Box sx={{ position: "relative", pl: { md: 2 } }}>
         <CardMedia
           component="img"
-          height="180"
+         
           image={image}
           sx={{ height: 164 }}
           alt="Paella dish"
         />
-       {!loggedInUser?.isPremiumTaken && article?.isPremium && <Box sx={{position:"absolute", top:5, left:5}}>
-          <MdWorkspacePremium style={{fontSize:32}} />
-        </Box>}
+        {!loggedInUser?.isPremiumTaken && article?.isPremium && (
+          <Box sx={{ position: "absolute", top: 5, left: {xs:5, md:20} }}>
+            <MdWorkspacePremium style={{ fontSize: 32 }} />
+          </Box>
+        )}
       </Box>
       <CardContent
         sx={{
           flexGrow: 1,
+          ml: { md: 2 },
           backgroundColor: `${
-            article?.isPremium
-              ? "secondary.main"
-              : "tertiary.main"
+            article?.isPremium ? "secondary.main" : "tertiary.main"
           }`,
         }}
       >
@@ -54,22 +54,32 @@ export default function AllArticleCard({ article }) {
           variant="h6"
           fontWeight={700}
           component="div"
-          color={
-             article?.isPremium && "#f5f5f5"
-          }
+          color={article?.isPremium && "#f5f5f5"}
         >
           {title.slice(0, 50)}...
         </Typography>
         <Typography
           sx={{ flexGrow: 1, textAlign: "justify" }}
           variant="body2"
-          color={
-             article?.isPremium && "#f5f5f5"
-          }
+          color={article?.isPremium && "#f5f5f5"}
         >
-          {description?.slice(0, 40)}... {<Link style={{color:article?.isPremium ? "white":"black", display: !loggedInUser?.isPremiumTaken && article?.isPremium && "none"}} to={`/details/${_id}`}>Details</Link> }
+          {description?.slice(0, 40)}...{" "}
+          {
+            <Link
+              style={{
+                color: article?.isPremium ? "white" : "black",
+                display:
+                  !loggedInUser?.isPremiumTaken && article?.isPremium && "none",
+              }}
+              to={`/details/${_id}`}
+            >
+              Details
+            </Link>
+          }
         </Typography>
       </CardContent>
     </Grid>
   );
-}
+};
+
+export default CategoriesArticleCard;
