@@ -12,6 +12,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { Link } from "react-router-dom";
 import "./dashboardNavbar.css";
+import { Typography } from "@mui/material";
 
 export default function DashboardNavbar() {
   const [selectedIndex, setSelectedIndex] = React.useState(null);
@@ -22,94 +23,98 @@ export default function DashboardNavbar() {
 
   return (
     <Box
-      sx={{ width: "100%", bgcolor: "transparent", position: "sticky", top: 0 }}
+      
     >
       <List component="nav" aria-label="main mailbox folders">
-        <Link to="/">
+        <Link style={{textDecoration:"none", color:"white"}} to="/">
           {" "}
           <ListItemButton>
-            <ListItemIcon>
-              <HomeIcon color="secondary" />
+            <ListItemIcon sx={{display:"flex", alignItems:"center", py:1}}>
+              <AutoStoriesIcon sx={{color:"white", mr:2, fontSize:38}} />
+              <Typography color="white" fontSize={30}>NexusNews</Typography>
             </ListItemIcon>
           </ListItemButton>
         </Link>
 
-        <Divider />
-        <Link to="/">
+        <Divider sx={{borderBottom:"1px solid white"}} />
+        <Link style={{textDecoration:"none"}} to="/">
           <ListItemButton
             selected={selectedIndex === -1}
             onClick={(event) => handleListItemClick(event, -1)}
             style={{
               backgroundColor: selectedIndex === -1 ? "#c6ac8f" : "transparent",
-              color: selectedIndex !== -1 ? "#c6ac8f" : "black",
+              color: selectedIndex === -1 ? "black" : "white",
             }}
           >
             <ListItemIcon>
-              <HomeIcon />
+              <HomeIcon sx={{ color: selectedIndex === -1 ? "#5e503f" : "white"}} />
             </ListItemIcon>{" "}
             <ListItemText primary="Home" />
           </ListItemButton>
         </Link>
-        <Link to="/dashboard">
+        <Link style={{textDecoration:"none"}} to="/dashboard">
           <ListItemButton
             selected={selectedIndex === -2}
             onClick={(event) => handleListItemClick(event, -2)}
             style={{
               backgroundColor: selectedIndex === -2 ? "#c6ac8f" : "transparent",
-              color: selectedIndex !== -2 ? "#c6ac8f" : "black",
+              color: selectedIndex === -2 ? "black" : "white",
+              fontWeight: selectedIndex === -2 ? 800 : "normal"
+             
             }}
           >
             <ListItemIcon>
-              <DashboardIcon />
+              <DashboardIcon sx={{ backgroundColor: selectedIndex === -2 ? "#c6ac8f" : "transparent",
+              color: selectedIndex === -2 ? "#5e503f" : "white",}} />
             </ListItemIcon>{" "}
-            <ListItemText primary="Dashboard" />
+            <ListItemText  primary="Dashboard" />
           </ListItemButton>
         </Link>
 
-        <Link to="/dashboard/allUsers">
+        <Link style={{textDecoration:"none"}} to="/dashboard/allUsers">
           <ListItemButton
             selected={selectedIndex === 0}
             onClick={(event) => handleListItemClick(event, 0)}
             style={{
               backgroundColor: selectedIndex === 0 ? "#c6ac8f" : "transparent",
-              color: selectedIndex !== 0 ? "#c6ac8f" : "black",
+              color: selectedIndex === 0 ? "black" : "white",
             }}
           >
             <ListItemIcon>
-              <GroupIcon />
+              <GroupIcon sx={{color: selectedIndex === 0 ? "#5e503f" : "white" }} />
             </ListItemIcon>{" "}
             <ListItemText primary="All Users" />
           </ListItemButton>
         </Link>
 
-        <Link to="/dashboard/articles">
+        <Link style={{textDecoration:"none"}} to="/dashboard/articles">
           <ListItemButton
             selected={selectedIndex === 1}
             onClick={(event) => handleListItemClick(event, 1)}
             style={{
               backgroundColor: selectedIndex === 1 ? "#c6ac8f" : "transparent",
-              color: selectedIndex !== 1 ? "#c6ac8f" : "black",
+              color: selectedIndex === 1 ? "black" : "white",
             }}
           >
             <ListItemIcon>
-              <DescriptionIcon />
+              <DescriptionIcon sx={{color: selectedIndex === 1 ? "#5e503f" : "white",}} />
             </ListItemIcon>
 
             <ListItemText primary="All Articles" />
           </ListItemButton>
         </Link>
 
-        <Link to="/dashboard/add-publisher">
+        <Link style={{textDecoration:"none"}} to="/dashboard/add-publisher">
           <ListItemButton
             selected={selectedIndex === 2}
             onClick={(event) => handleListItemClick(event, 2)}
             style={{
               backgroundColor: selectedIndex === 2 ? "#c6ac8f" : "transparent",
-              color: selectedIndex !== 2 ? "#c6ac8f" : "black",
+              color: selectedIndex === 2 ? "black" : "white",
             }}
           >
             <ListItemIcon>
-              <AutoStoriesIcon />
+              <AutoStoriesIcon sx={{color: selectedIndex === 2 ? "#5e503f" : "white",}} />
             </ListItemIcon>
             <ListItemText primary="Add publisher" />
           </ListItemButton>

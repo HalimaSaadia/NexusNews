@@ -1,8 +1,7 @@
-import React from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Chart } from "react-google-charts";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Loader from "../../../shared/Loader/Loader";
 
 const ArticlesChart = () => {
@@ -14,11 +13,11 @@ const ArticlesChart = () => {
       return result.data;
     },
   });
-  console.log(articlesStates);
-  if(articlesStatesLoading){
-    return <Loader />
+
+  if (articlesStatesLoading) {
+    return <Loader />;
   }
-const data = [
+  const data = [
     [
       {
         v: "Mikes",
@@ -35,22 +34,37 @@ const data = [
       "Articles Status",
       "VP",
     ],
-    [`${articlesStates?.allArticles} <div>All Articles</div>`, "Articles Status", ""],
-    [`${articlesStates?.pendingArticles}<div>Pending Articles</div>`, "Jim", "Bob Sponge"],
-    [`${articlesStates?.declinedArticles}<p>Declined Articles</p>`, `${articlesStates?.pendingArticles}<div>Pending Articles</div>`, ""],
+    [
+      `${articlesStates?.allArticles} <div>All Articles</div>`,
+      "Articles Status",
+      "",
+    ],
+    [
+      `${articlesStates?.pendingArticles}<div>Pending Articles</div>`,
+      "Jim",
+      "Bob Sponge",
+    ],
+    [
+      `${articlesStates?.declinedArticles}<p>Declined Articles</p>`,
+      `${articlesStates?.pendingArticles}<div>Pending Articles</div>`,
+      "",
+    ],
   ];
-  
-const options = {
+
+  const options = {
     allowHtml: true,
+    backgroundColor: "#7A6954",
   };
   return (
-    <Container>
+    <Container sx={{display:"flex", justifyContent:"center", alignItems:"center", height:405, backgroundColor:"#7A6954", mt:2, mx:2, width:"92%", border:"3px solid #5e503f"}}>
       <Chart
         chartType="OrgChart"
         data={data}
         options={options}
-        width="100%"
-        height="400px"
+        width="min-content"
+        
+
+        style={{backgroundColor: "#7A6954"}}
       />
     </Container>
   );

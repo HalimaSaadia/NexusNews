@@ -63,7 +63,7 @@ export default function Details() {
     <Container sx={{ py: 5 }}>
       <Grid container>
         <Grid item md={8}>
-          <Box sx={{position:{md:"sticky"}, top:0}}>
+          <Box sx={{position:{md:"sticky"}, top:-1200}}>
             <Card sx={{ p: 2 }}>
               <Box sx={{ position: "relative" }}>
                 {article.image ? (
